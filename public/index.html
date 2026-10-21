@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>China Trip Planner</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <section class="panel trip-settings">
+      <div class="trip-switcher">
+        <select id="tripSelect" aria-label="Current trip"></select>
+        <button id="newTripBtn" type="button">+ New trip</button>
+        <button id="deleteTripBtn" type="button" class="secondary">Delete</button>
+      </div>
+      <h1 id="tripTitleDisplay">My China Trip</h1>
+      <details>
+        <summary>Trip settings</summary>
+        <label>Title <input id="tripTitle" type="text" /></label>
+        <label>Start date <input id="tripStartDate" type="date" /></label>
+        <label># of days <input id="tripDays" type="number" min="1" max="60" /></label>
+        <button id="saveTripBtn">Save</button>
+      </details>
+    </section>
+
+    <section class="panel cities-panel">
+      <h2>Cities</h2>
+      <div class="search-field-wrap">
+        <label>Find a city <input id="cityInput" type="text" placeholder="e.g. Guangzhou, 广州, chengdu" autocomplete="off" /></label>
+        <ul id="cityDropdown" class="suggest-dropdown"></ul>
+      </div>
+      <div id="tripCityChips" class="city-chips"></div>
+    </section>
+
+    <section class="panel add-place">
+      <h2>Add a place</h2>
+      <p class="hint">Paste a restaurant/attraction name you found on Dianping and search Amap for its real location.</p>
+      <div class="search-field-wrap">
+        <label>Keyword / name <input id="searchKeywords" type="text" placeholder="e.g. 海底捞火锅" autocomplete="off" /></label>
+        <ul id="suggestDropdown" class="suggest-dropdown"></ul>
+      </div>
+      <p id="activeCityLabel" class="active-city-label"></p>
+      <button id="searchBtn">Search Amap</button>
+      <ul id="searchResults" class="results-list"></ul>
+    </section>
+
+    <section class="panel explore-nearby">
+      <h2>Explore nearby</h2>
+      <p class="hint">Arm this, then click a spot on the map to see what Amap knows about nearby.</p>
+      <button id="exploreToggleBtn" type="button">📍 Click map to explore nearby</button>
+      <label>Radius
+        <select id="exploreRadius">
+          <option value="500">500 m</option>
+          <option value="1000" selected>1 km</option>
+          <option value="2000">2 km</option>
+          <option value="5000">5 km</option>
+        </select>
+      </label>
+      <label>Optional keyword filter <input id="exploreKeyword" type="text" placeholder="e.g. coffee, 咖啡" /></label>
+      <ul id="nearbyResults" class="results-list"></ul>
+    </section>
+
+    <section class="panel day-tabs">
+      <h2>Days</h2>
+      <div id="dayTabs" class="tabs"></div>
+    </section>
+
+    <section class="panel day-view">
+      <div class="day-view-header">
+        <h2 id="dayViewTitle">Day 1</h2>
+        <div class="day-actions">
+          <select id="routeMode">
+            <option value="driving">Driving</option>
+            <option value="walking">Walking</option>
+            <option value="transit">Transit</option>
+          </select>
+          <button id="optimizeBtn">Optimize order</button>
+          <button id="routeBtn">Show route times</button>
+        </div>
+      </div>
+      <div id="categoryFilters" class="category-filters"></div>
+      <ul id="placeList" class="place-list"></ul>
+      <ol id="legList" class="leg-list"></ol>
+    </section>
+  </aside>
+
+  <main class="map-wrap">
+    <div id="map"></div>
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
